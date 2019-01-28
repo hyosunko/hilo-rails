@@ -1,0 +1,40 @@
+<h1>Hi Lo Rails Game</h1>
+<p>how to play game:</p>
+<p>Please enter number between 1 and 100</p>
+
+<hr/>
+
+<% if cookies[:name].nil? %>
+
+    <p> Please enter your name </p>
+
+    <form action="try" method="get">
+        <input type="text" name="name"/>
+        <input type="submit" value="submit"/>
+    </form>
+
+<% elsif @guess.nil? %>
+    Hi <%= cookies[:name].upcase %>!<br/>
+    Enter your number. <br/>
+
+    <hr/>
+
+    <form action="try" method="get">
+        <input type="number" name="guess"/>
+        <input type="submit" value="submit"/>
+    </form>
+
+<% else %>
+    Hi <%= cookies[:name].upcase %>!<br/>
+    Your guessed number is <%= @guess %> <br/>
+    Your number of plays : <%= cookies[:last_counter] %><br/>
+    <%= @result_string %><br/>
+
+    <hr/>
+
+    <form action="try" method="get">
+        <input type="number" name="guess"/>
+        <input type="submit" value="submit"/>
+    </form>
+
+<% end %>
